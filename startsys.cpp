@@ -31,21 +31,21 @@ int startsys() {
     if(fp!=NULL)
     {
         printf("|-------------------------------------------|\n");
-        printf("|-----------myfsys is loading---------------|\n");
+        printf("|---Duo&Peng's file system is loading-------|\n");
         printf("|-------------------------------------------|\n\n");
         fread(myvhard,sizeof(char),DISKSIZE,fp);
         fclose(fp);
     }
     else{
         printf("|-------------------------------------------|\n");
-        printf("|-----------myfsys is not exit--------------|\n");
+        printf("|---Duo&Peng's file system is not exit------|\n");
         printf("|--File system is being created now --------|\n");
         printf("|-------------------------------------------|\n\n");
         format();
     }
-    //初始化用户打开表
+    //init user open list
     memset(openfilelist,0,sizeof(openfilelist));
-    //将根目录打开,首先修改fcb里的内容
+    //open root file and modify
     openfilelist->fcb.first=8;
     //文件打开表项的内容
     openfilelist[0].topenfile=1;
@@ -54,7 +54,7 @@ int startsys() {
     strcpy(openfilelist->fatherfilename,"");
     ptrcuridr=&openfilelist[0];
     openfilelist[0].pos=0;
-    //当前目录设置为根目录
+    //set current direction as root
     currentdir=Path;
     return 1;
 }

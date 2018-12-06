@@ -20,7 +20,11 @@ sys/malloc.h
 time.h
 -
 
-/Users/gabbo/Documents/GitHub/OSFileSystem/open.cpp
+/Users/gabbo/Documents/GitHub/OSFileSystem/cd.cpp
+OS.h
+/Users/gabbo/Documents/GitHub/OSFileSystem/OS.h
+
+/Users/gabbo/Documents/GitHub/OSFileSystem/startsys.cpp
 OS.h
 /Users/gabbo/Documents/GitHub/OSFileSystem/OS.h
 

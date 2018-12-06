@@ -11,19 +11,19 @@ extern USEROPEN *ptrcuridr;//当前目录在文件打开表的位置
 extern DISK* disk;//将内容结构化
 extern char command[50];//文件名标示符
 
-/*----------------------更改当前目录函数---------------------*/
+/*----------------------modify current direction---------------------*/
 int cd(char *dirname) {
-        USEROPEN *temp = ptrcuridr;//暂时保管一下ptrcuridr原始值,可能要回溯
+        USEROPEN *temp = ptrcuridr;//temp store the original value of ptrcuridr for later use
         int fd=open_path(dirname);
         if (fd != -1) {
-            //关掉旧的描述符
+            //close previous old
            int old=temp->pos;
-            //获取旧的描述符
-            if (old != 0)   //根目录描述符不关
+            //get previous old
+            if (old != 0)   //root old not match
                 close(old);
-            //工作目录指向它
+            //set to work list
             ptrcuridr = openfilelist + fd;
-            //当前目录赋值
+            //assign to current direction
             currentdir= ptrcuridr->dir ;
             currentdir+= '/';
             currentdir+= ptrcuridr->fcb.filename;
